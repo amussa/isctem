@@ -26,6 +26,15 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>logout</servlet-name>
+		<servlet-class>mz.co.empresa.Logout</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>logout</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>notas</servlet-name>
 		<servlet-class>mz.co.empresa.Notas</servlet-class>
 	</servlet>

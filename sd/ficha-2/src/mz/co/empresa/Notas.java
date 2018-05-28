@@ -16,19 +16,23 @@ public class Notas extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String action = req.getParameter("action");
-		if (action != null) {
-			switch (action) {
-			case "save":
-				salvar(req, resp);
-				break;
-			default:
-				break;
+		if (Helper.isLoggedIn(req, resp)) {
+			String action = req.getParameter("action");
+			if (action != null) {
+				switch (action) {
+				case "save":
+					salvar(req, resp);
+					break;
+				default:
+					break;
+				}
 			}
+			setNotas(req, resp);
+		} else {
+			resp.sendRedirect("index.html");
 		}
-		setNotas(req, resp);
 	}
-
+	
 	private void setNotas(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setAttribute("notas", notas);
 		req.getRequestDispatcher("notas.jsp").forward(req, resp);
