@@ -25,7 +25,7 @@
             <a class="nav-link" href="horas">Horas <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="notas">Notas <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="notas">Anotações <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sistema</a>
@@ -49,28 +49,30 @@
 			<table class="table table-striped">
 			  <thead>
 			    <tr>
-			  	 <form method="post" action="saveNota">
-			      <th scope="row"></th>
-			      <td colspan="2"><input type="text" name="texto" class="form-control" placeholder="Escreva aqui a sua anotação" autocomplete="off" required autofocus></td>
-			      <td><button class="btn btn-primary btn-block" type="submit">Salvar</button></td>
-			     </form>
+			  	  <form method="post" action="notas">
+			  	    <input type="hidden" name="action" value="save">
+			        <th scope="row"></th>
+			        <td colspan="2"><input type="text" name="texto" class="form-control" placeholder="Escreva aqui a sua anotação" autocomplete="off" required autofocus></td>
+			        <td><button class="btn btn-primary btn-block" type="submit">Salvar</button></td>
+			      </form>
 			    </tr>
 			  
 			    <tr>
 			      <th scope="col">#</th>
 			      <th scope="col" width="70%">Anotação</th>
-			      <th scope="col">Data</th>
-			      <th scope="col"></th>
+			      <th scope="col" width="29%">Data</th>
+			      <th scope="col" width="1%"></th>
 			    </tr>
 			  </thead>
 			  <tbody>
+			  <% int i = 0; %>
 			  <% List<Nota> notas = (ArrayList<Nota>)request.getAttribute("notas"); %>
-			  <% for(int i = 0; i < notas.size(); i+=1) { %>
+			  <% for(Nota nota: notas) { %>
 			    <tr>
-			      <th scope="row">1</th>
-			      <td>Mark</td>
-			      <td>Otto</td>
-			      <td>@mdo</td>
+			      <th scope="row"><%=++i%></th>
+			      <td><%=nota.getTexto()%></td>
+			      <td><%=nota.getDataCriacao()%></td>
+			      <td></td>
 			    </tr>
 			  <% } %>
 			  </tbody>

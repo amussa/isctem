@@ -12,14 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 @SuppressWarnings("serial")
 public class Notas extends HttpServlet {
 
-	private static List<Nota> notas = new ArrayList<Nota>();
+	private List<Nota> notas = new ArrayList<Nota>();
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String action = getServletConfig().getInitParameter("action");
+		String action = req.getParameter("action");
 		if (action != null) {
 			switch (action) {
-			case "salvar":
+			case "save":
 				salvar(req, resp);
 				break;
 			default:

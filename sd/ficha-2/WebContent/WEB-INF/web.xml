@@ -34,17 +34,4 @@
 		<url-pattern>/notas</url-pattern>
 	</servlet-mapping>
 	
-	<servlet>
-		<servlet-name>saveNota</servlet-name>
-		<servlet-class>mz.co.empresa.Notas</servlet-class>
-		<init-param>
-			<param-name>action</param-name>
-			<param-value>salvar</param-value>
-		</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>saveNota</servlet-name>
-		<url-pattern>/saveNota</url-pattern>
-	</servlet-mapping>
-	
 </web-app>
