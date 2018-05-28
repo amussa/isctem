@@ -16,7 +16,7 @@ public class Login extends HttpServlet {
 		String senha = req.getParameter("senha");
 		System.out.println(String.format("Login: %s, Senha: %s", utilizador, senha));
 		if (utilizador.equals("admin") && senha.equals("isctem")) {
-			req.getRequestDispatcher("welcome.html").forward(req, resp);
+			resp.sendRedirect("welcome.html");
 		} else {
 			req.getRequestDispatcher("erro.html").forward(req, resp);
 		}
