@@ -12,22 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 @SuppressWarnings("serial")
 public class Horas extends HttpServlet {
 
-   private String message;
-   private int hitCount;
+	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		response.setIntHeader("Refresh", 1);
+		PrintWriter out = response.getWriter();
+		out.println("<h1>" + new Date() + "</h1>");
+	}
 
-   public void init() throws ServletException {
-      hitCount = 0;
-   }
-
-   public void service(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-      response.setIntHeader("Refresh", 1);
-      message = new Date().toString();;
-      response.setContentType("text/html");
-      PrintWriter out = response.getWriter();
-      out.println("<h1>" + message + "</h1>");
-   }
-
-   public void destroy() {
-   }
 }
